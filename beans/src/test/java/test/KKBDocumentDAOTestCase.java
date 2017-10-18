@@ -12,9 +12,9 @@ import org.junit.Test;
 import com.lapsa.kkb.core.KKBDocument;
 import com.lapsa.kkb.core.KKBOrder;
 import com.lapsa.kkb.core.KKBPaymentRequestDocument;
-import com.lapsa.kkb.dao.KKBDocumentDAO;
-import com.lapsa.kkb.dao.KKBOrderDAO;
 
+import tech.lapsa.epayment.dao.KKBDocumentDAO;
+import tech.lapsa.epayment.dao.KKBOrderDAO;
 import tech.lapsa.patterns.dao.NotFound;
 
 public class KKBDocumentDAOTestCase extends ConstructorMethods {

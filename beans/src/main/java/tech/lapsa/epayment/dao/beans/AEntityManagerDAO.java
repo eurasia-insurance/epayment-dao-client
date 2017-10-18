@@ -1,4 +1,4 @@
-package com.lapsa.kkb.dao.jpaImpl;
+package tech.lapsa.epayment.dao.beans;
 
 import static com.lapsa.kkb.jpaUnit.KKBConstants.*;
 

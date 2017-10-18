@@ -1,9 +1,10 @@
-package com.lapsa.kkb.dao.jpaImpl;
+package tech.lapsa.epayment.dao.beans;
 
 import javax.ejb.Singleton;
 
 import com.lapsa.kkb.core.KKBDocument;
-import com.lapsa.kkb.dao.KKBDocumentDAO;
+
+import tech.lapsa.epayment.dao.KKBDocumentDAO;
 
 @Singleton
 public class KKBDocumentDAOBean extends AKKBGeneralDocumentDAO<KKBDocument>

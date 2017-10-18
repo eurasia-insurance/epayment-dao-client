@@ -1,4 +1,4 @@
-package com.lapsa.kkb.dao.jpaImpl;
+package tech.lapsa.epayment.dao.beans;
 
 import java.util.List;
 
@@ -12,7 +12,8 @@ import javax.persistence.criteria.Root;
 import com.lapsa.kkb.core.KKBDocument;
 import com.lapsa.kkb.core.KKBDocument_;
 import com.lapsa.kkb.core.KKBOrder;
-import com.lapsa.kkb.dao.KKBGeneralDocumentDAO;
+
+import tech.lapsa.epayment.dao.KKBGeneralDocumentDAO;
 
 public abstract class AKKBGeneralDocumentDAO<T extends KKBDocument> extends AEntityManagerDAO<T, Integer>
 	implements KKBGeneralDocumentDAO<T> {

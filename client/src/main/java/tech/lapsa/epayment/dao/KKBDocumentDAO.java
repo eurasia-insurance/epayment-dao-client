@@ -1,4 +1,4 @@
-package com.lapsa.kkb.dao;
+package tech.lapsa.epayment.dao;
 
 import javax.ejb.Local;
 
