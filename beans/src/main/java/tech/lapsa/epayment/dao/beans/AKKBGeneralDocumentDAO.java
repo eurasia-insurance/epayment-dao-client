@@ -15,7 +15,7 @@ import com.lapsa.kkb.core.KKBOrder;
 
 import tech.lapsa.epayment.dao.KKBGeneralDocumentDAO;
 
-public abstract class AKKBGeneralDocumentDAO<T extends KKBDocument> extends AEntityManagerDAO<T, Integer>
+public abstract class AKKBGeneralDocumentDAO<T extends KKBDocument> extends ABaseDAO<T, Integer>
 	implements KKBGeneralDocumentDAO<T> {
 
     public AKKBGeneralDocumentDAO(Class<T> entityClass) {

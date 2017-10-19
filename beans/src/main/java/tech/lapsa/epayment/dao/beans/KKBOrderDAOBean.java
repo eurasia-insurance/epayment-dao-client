@@ -7,7 +7,7 @@ import com.lapsa.kkb.core.KKBOrder;
 import tech.lapsa.epayment.dao.KKBOrderDAO;
 
 @Singleton
-public class KKBOrderDAOBean extends AEntityManagerDAO<KKBOrder, String> implements KKBOrderDAO {
+public class KKBOrderDAOBean extends ABaseDAO<KKBOrder, String> implements KKBOrderDAO {
 
     public KKBOrderDAOBean() {
 	super(KKBOrder.class);
