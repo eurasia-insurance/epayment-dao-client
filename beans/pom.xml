@@ -75,15 +75,4 @@
 		</dependency>
 	</dependencies>
 
-	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/epayment/dao.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/epayment/dao.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<issueManagement>
-		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/epayment/dao/issues</url>
-	</issueManagement>
-
 </project>
