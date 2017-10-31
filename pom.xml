@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.lapsa.maven</groupId>
 		<artifactId>maven-general</artifactId>
-		<version>3.0-SNAPSHOT</version>
+		<version>3.0</version>
 	</parent>
 
 	<groupId>tech.lapsa.epayment</groupId>
@@ -22,14 +22,14 @@
 
 	<properties>
 		<!-- BOMS -->
-		<javax-javaee-bom.version>7.0-SNAPSHOT</javax-javaee-bom.version>
-		<java-commons-root.version>1.0-SNAPSHOT</java-commons-root.version>
+		<javax-javaee-bom.version>7.0</javax-javaee-bom.version>
+		<java-commons.version>1.0</java-commons.version>
 		<!-- tech -->
-		<patterns-dao.version>1.0-SNAPSHOT</patterns-dao.version>
-		<lapsa-arquillian-test.version>1.0-SNAPSHOT</lapsa-arquillian-test.version>
+		<patterns-dao.version>1.0</patterns-dao.version>
+		<lapsa-arquillian-test.version>1.0</lapsa-arquillian-test.version>
 		<!-- oldies -->
-		<kkb-lib.version>3.2-SNAPSHOT</kkb-lib.version>
-		<kkb-jpa-unit.version>2.5-SNAPSHOT</kkb-jpa-unit.version>
+		<kkb-lib.version>3.2</kkb-lib.version>
+		<kkb-jpa-unit.version>2.5</kkb-jpa-unit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -45,7 +45,7 @@
 			<dependency>
 				<groupId>tech.lapsa.java</groupId>
 				<artifactId>java-commons-root</artifactId>
-				<version>${java-commons-root.version}</version>
+				<version>${java-commons.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
