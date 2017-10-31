@@ -39,10 +39,9 @@
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
-		<!-- oldies -->
 		<dependency>
-			<groupId>com.lapsa.kkb-lib</groupId>
-			<artifactId>kkb-jpa-unit</artifactId>
+			<groupId>tech.lapsa.epayment</groupId>
+			<artifactId>epayment-jpa-unit</artifactId>
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
