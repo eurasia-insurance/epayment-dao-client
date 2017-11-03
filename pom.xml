@@ -27,8 +27,8 @@
 		<patterns-dao.version>1.0</patterns-dao.version>
 		<lapsa-arquillian-test.version>1.0</lapsa-arquillian-test.version>
 		<!-- oldies -->
-		<kkb-lib.version>3.2</kkb-lib.version>
-		<kkb-jpa-unit.version>2.5</kkb-jpa-unit.version>
+		<kkb-lib.version>3.3-SNAPSHOT</kkb-lib.version>
+		<kkb-jpa-unit.version>2.6-SNAPSHOT</kkb-jpa-unit.version>
 	</properties>
 
 	<dependencyManagement>
