@@ -11,7 +11,7 @@ import tech.lapsa.epayment.dao.QazkomOrderDAO;
 import tech.lapsa.epayment.domain.QazkomOrder;
 import tech.lapsa.java.commons.function.MyNumbers;
 
-public class QazkomDocumentOrderDAOTest extends ArquillianBaseTestCase {
+public class QazkomOrderDAOTest extends ArquillianBaseTestCase {
 
     @Inject
     private QazkomOrderDAO dao;
