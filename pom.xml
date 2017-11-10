@@ -65,6 +65,11 @@
 				<artifactId>epayment-jpa-unit</artifactId>
 				<version>${epayment-jpa-unit.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>tech.lapsa.lapsa</groupId>
+				<artifactId>lapsa-arquillian-test</artifactId>
+				<version>${lapsa-arquillian-test.version}</version>
+			</dependency>
 			<!-- own -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
@@ -76,6 +81,17 @@
 				<artifactId>epayment-dao</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
+			</dependency>
+			<!-- test -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.192</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mariadb.jdbc</groupId>
+				<artifactId>mariadb-java-client</artifactId>
+				<version>1.4.4</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
