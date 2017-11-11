@@ -1,10 +1,9 @@
 package tech.lapsa.epayment.dao.beans;
 
-import static com.lapsa.kkb.jpaUnit.KKBConstants.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import tech.lapsa.epayment.jpa.EpaymentConstants;
 import tech.lapsa.patterns.dao.beans.AGeneralDAO;
 
 public abstract class ABaseDAO<T, I> extends AGeneralDAO<T, I> {
@@ -13,7 +12,7 @@ public abstract class ABaseDAO<T, I> extends AGeneralDAO<T, I> {
 	super(entityClazz);
     }
 
-    @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
+    @PersistenceContext(unitName = EpaymentConstants.PERSISTENCE_UNIT_NAME)
     protected EntityManager em;
 
     @Override

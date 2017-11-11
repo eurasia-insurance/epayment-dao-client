@@ -22,13 +22,12 @@
 	<properties>
 		<!-- BOMS -->
 		<javax-javaee-bom.version>7.0</javax-javaee-bom.version>
-		<java-commons.version>1.0</java-commons.version>
+		<java-commons.version>1.1-SNAPSHOT</java-commons.version>
 		<!-- tech -->
-		<patterns-dao.version>1.0</patterns-dao.version>
+		<patterns-dao.version>1.1-SNAPSHOT</patterns-dao.version>
 		<lapsa-arquillian-test.version>1.0</lapsa-arquillian-test.version>
-		<!-- oldies -->
-		<kkb-lib.version>3.3-SNAPSHOT</kkb-lib.version>
-		<kkb-jpa-unit.version>2.6-SNAPSHOT</kkb-jpa-unit.version>
+		<epayment-domain.version>4.0-SNAPSHOT</epayment-domain.version>
+		<epayment-jpa-unit.version>4.0-SNAPSHOT</epayment-jpa-unit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -57,6 +56,16 @@
 			</dependency>
 			<!-- tech -->
 			<dependency>
+				<groupId>tech.lapsa.epayment</groupId>
+				<artifactId>epayment-domain</artifactId>
+				<version>${epayment-domain.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.lapsa.epayment</groupId>
+				<artifactId>epayment-jpa-unit</artifactId>
+				<version>${epayment-jpa-unit.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>tech.lapsa.lapsa</groupId>
 				<artifactId>lapsa-arquillian-test</artifactId>
 				<version>${lapsa-arquillian-test.version}</version>
@@ -72,19 +81,6 @@
 				<artifactId>epayment-dao</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
-			</dependency>
-			<!-- oldies -->
-			<dependency>
-				<groupId>com.lapsa.kkb-lib</groupId>
-				<artifactId>kkb-root</artifactId>
-				<version>${kkb-lib.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.lapsa.kkb-lib</groupId>
-				<artifactId>kkb-jpa-unit</artifactId>
-				<version>${kkb-jpa-unit.version}</version>
 			</dependency>
 			<!-- test -->
 			<dependency>
