@@ -24,7 +24,7 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer> implement
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getByNumber(String number) throws NotFound, IllegalArgumentException, TooMuchFound {
+    public QazkomOrder getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound {
 	MyStrings.requireNonEmpty(number, "number");
 
 	CriteriaBuilder cb = em.getCriteriaBuilder();
