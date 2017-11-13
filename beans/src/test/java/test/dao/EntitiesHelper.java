@@ -62,7 +62,7 @@ public final class EntitiesHelper {
     public static QazkomOrder qazkomOrder(Invoice invoice) {
 	return QazkomOrder.builder() //
 		.forInvoice(invoice) //
-		.withOrderNumber("617300137516891") //
+		.withNumber("617300137516891") //
 		.withMerchant("92061103", "Test shop 3", merchantCert, merchantKey) //
 		.build();
     }
