@@ -9,7 +9,9 @@ import com.lapsa.fin.FinCurrency;
 import com.lapsa.international.localization.LocalizationLanguage;
 
 import tech.lapsa.epayment.domain.Invoice;
+import tech.lapsa.epayment.domain.Invoice.InvoiceBuilder;
 import tech.lapsa.epayment.domain.QazkomOrder;
+import tech.lapsa.epayment.domain.QazkomOrder.QazkomOrderBuilder;
 import tech.lapsa.java.commons.resources.Resources;
 import tech.lapsa.java.commons.security.MyCertificates;
 import tech.lapsa.java.commons.security.MyKeyStores;
@@ -45,6 +47,11 @@ public final class EntitiesHelper {
     }
 
     public static Invoice invoice() {
+	return invoiceBuilder() //
+		.build();
+    }
+
+    public static InvoiceBuilder invoiceBuilder() {
 	return Invoice.builder() //
 		.withCurrencty(FinCurrency.KZT) //
 		.withConsumer("John Bull", "john.bull@mail.com", LocalizationLanguage.RUSSIAN,
@@ -52,7 +59,7 @@ public final class EntitiesHelper {
 		.withExternalId("123") //
 		.withItem("Apple iPhone X", 1, 1000d) //
 		.withItem("Apple MacBook Pro", 1, 2000d) //
-		.build();
+	;
     }
 
     public static QazkomOrder qazkomOrder() {
@@ -60,10 +67,15 @@ public final class EntitiesHelper {
     }
 
     public static QazkomOrder qazkomOrder(Invoice invoice) {
+	return qazkomOrderBuilder(invoice) //
+		.build();
+    }
+
+    public static QazkomOrderBuilder qazkomOrderBuilder(Invoice invoice) {
 	return QazkomOrder.builder() //
 		.forInvoice(invoice) //
 		.withNumber("617300137516891") //
 		.withMerchant("92061103", "Test shop 3", merchantCert, merchantKey) //
-		.build();
+	;
     }
 }
