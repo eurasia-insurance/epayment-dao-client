@@ -21,4 +21,15 @@ public interface QazkomOrderDAO extends GeneralDAO<QazkomOrder, Integer> {
 	    return Optional.empty();
 	}
     }
+
+    default boolean isUniqueNumber(String number) {
+	try {
+	    getByNumber(number);
+	    return false;
+	} catch (TooMuchFound e) {
+	    return false;
+	} catch (NotFound e) {
+	    return true;
+	}
+    }
 }
