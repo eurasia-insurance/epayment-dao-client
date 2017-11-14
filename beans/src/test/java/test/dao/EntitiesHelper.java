@@ -12,7 +12,7 @@ import tech.lapsa.epayment.domain.Invoice;
 import tech.lapsa.epayment.domain.Invoice.InvoiceBuilder;
 import tech.lapsa.epayment.domain.QazkomOrder;
 import tech.lapsa.epayment.domain.QazkomOrder.QazkomOrderBuilder;
-import tech.lapsa.java.commons.resources.Resources;
+import tech.lapsa.java.commons.io.MyResources;
 import tech.lapsa.java.commons.security.MyCertificates;
 import tech.lapsa.java.commons.security.MyKeyStores;
 import tech.lapsa.java.commons.security.MyKeyStores.StoreType;
@@ -33,7 +33,7 @@ public final class EntitiesHelper {
     private static PrivateKey merchantKey;
 
     static {
-	InputStream storeStream = Resources.optionalAsStream(EntitiesHelper.class, KEYSTORE) //
+	InputStream storeStream = MyResources.optionalAsStream(EntitiesHelper.class, KEYSTORE) //
 		.orElseThrow(() -> new RuntimeException("Keystore not found"));
 
 	KeyStore keystore = MyKeyStores.from(storeStream, STORETYPE, STOREPASS) //
