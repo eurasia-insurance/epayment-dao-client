@@ -53,7 +53,7 @@ public final class EntitiesHelper {
 
     public static InvoiceBuilder invoiceBuilder() {
 	return Invoice.builder() //
-		.withCurrencty(FinCurrency.KZT) //
+		.withCurrency(FinCurrency.KZT) //
 		.withConsumer("John Bull", "john.bull@mail.com", LocalizationLanguage.RUSSIAN,
 			TaxpayerNumber.of("800225000319")) //
 		.withExternalId("123") //
