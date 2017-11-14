@@ -12,9 +12,9 @@ import tech.lapsa.patterns.dao.TooMuchFound;
 @Local
 public interface QazkomPaymentDAO extends GeneralDAO<QazkomPayment, Integer> {
 
-    QazkomPayment getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound;
+    QazkomPayment getByNumber(String number) throws IllegalArgumentException, NotFound;
 
-    default Optional<QazkomPayment> optionalByNumber(String number) throws IllegalArgumentException, TooMuchFound {
+    default Optional<QazkomPayment> optionalByNumber(String number) throws IllegalArgumentException {
 	try {
 	    return Optional.of(getByNumber(number));
 	} catch (NotFound e) {
