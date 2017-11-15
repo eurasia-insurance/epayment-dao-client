@@ -12,9 +12,9 @@ import tech.lapsa.patterns.dao.TooMuchFound;
 @Local
 public interface InvoiceDAO extends GeneralDAO<Invoice, Integer> {
 
-    Invoice getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound;
+    Invoice getByNumber(String number) throws IllegalArgumentException, NotFound;
 
-    default Optional<Invoice> optionalByNumber(String number) throws IllegalArgumentException, TooMuchFound {
+    default Optional<Invoice> optionalByNumber(String number) throws IllegalArgumentException {
 	try {
 	    return Optional.of(getByNumber(number));
 	} catch (NotFound e) {

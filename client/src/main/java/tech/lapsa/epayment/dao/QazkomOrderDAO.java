@@ -13,9 +13,9 @@ import tech.lapsa.patterns.dao.TooMuchFound;
 @Local
 public interface QazkomOrderDAO extends GeneralDAO<QazkomOrder, Integer> {
 
-    QazkomOrder getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound;
+    QazkomOrder getByNumber(String number) throws IllegalArgumentException, NotFound;
 
-    default Optional<QazkomOrder> optionalByNumber(String number) throws IllegalArgumentException, TooMuchFound {
+    default Optional<QazkomOrder> optionalByNumber(String number) throws IllegalArgumentException {
 	try {
 	    return Optional.of(getByNumber(number));
 	} catch (NotFound e) {
