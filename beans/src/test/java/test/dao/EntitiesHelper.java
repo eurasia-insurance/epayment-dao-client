@@ -4,8 +4,8 @@ import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
+import java.util.Currency;
 
-import com.lapsa.fin.FinCurrency;
 import com.lapsa.international.localization.LocalizationLanguage;
 
 import tech.lapsa.epayment.domain.Invoice;
@@ -53,7 +53,7 @@ public final class EntitiesHelper {
 
     public static InvoiceBuilder invoiceBuilder() {
 	return Invoice.builder() //
-		.withCurrency(FinCurrency.KZT) //
+		.withCurrency(Currency.getInstance("KZT")) //
 		.withConsumer("John Bull", "john.bull@mail.com", LocalizationLanguage.RUSSIAN,
 			TaxpayerNumber.of("800225000319")) //
 		.withExternalId("123") //
