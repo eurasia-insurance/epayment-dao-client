@@ -7,6 +7,7 @@ import java.security.cert.X509Certificate;
 import java.util.Currency;
 
 import com.lapsa.international.localization.LocalizationLanguage;
+import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.epayment.domain.Invoice;
 import tech.lapsa.epayment.domain.Invoice.InvoiceBuilder;
@@ -54,11 +55,14 @@ public final class EntitiesHelper {
     public static InvoiceBuilder invoiceBuilder() {
 	return Invoice.builder() //
 		.withCurrency(Currency.getInstance("KZT")) //
-		.withConsumer("John Bull", "john.bull@mail.com", LocalizationLanguage.RUSSIAN,
-			TaxpayerNumber.of("800225000319")) //
+		.withConsumerName("John Bull") //
+		.withConsumerPreferLanguage(LocalizationLanguage.RUSSIAN) //
+		.withConsumerTaxpayerNumber(TaxpayerNumber.of("800225000319"))
+		.withConsumerPhone(PhoneNumber.of("+77019956587")) //
+		.withConsumerEmail("john.bull@mail.com") //
 		.withExternalId("123") //
 		.withItem("Apple iPhone X", 1, 1000d) //
-		.withItem("Apple MacBook Pro", 1, 2000d) //
+		.withItem("Apple MacBook Pro", 1, 1382.05d) //
 	;
     }
 
