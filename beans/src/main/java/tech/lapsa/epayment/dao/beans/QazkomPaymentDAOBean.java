@@ -8,15 +8,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import tech.lapsa.epayment.dao.QazkomPaymentDAO;
+import tech.lapsa.epayment.dao.QazkomPaymentDAO.QazkomPaymentDAOLocal;
+import tech.lapsa.epayment.dao.QazkomPaymentDAO.QazkomPaymentDAORemote;
 import tech.lapsa.epayment.domain.QazkomPayment;
 import tech.lapsa.epayment.domain.QazkomPayment_;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.dao.NotFound;
-import tech.lapsa.patterns.dao.TooMuchFound;
 
 @Stateless
-public class QazkomPaymentDAOBean extends ABaseDAO<QazkomPayment, Integer> implements QazkomPaymentDAO {
+public class QazkomPaymentDAOBean extends ABaseDAO<QazkomPayment, Integer>
+	implements QazkomPaymentDAOLocal, QazkomPaymentDAORemote {
 
     public QazkomPaymentDAOBean() {
 	super(QazkomPayment.class);
@@ -24,7 +25,7 @@ public class QazkomPaymentDAOBean extends ABaseDAO<QazkomPayment, Integer> imple
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomPayment getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound {
+    public QazkomPayment getByNumber(String number) throws IllegalArgumentException, NotFound {
 	MyStrings.requireNonEmpty(number, "number");
 
 	CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -35,5 +36,16 @@ public class QazkomPaymentDAOBean extends ABaseDAO<QazkomPayment, Integer> imple
 
 	TypedQuery<QazkomPayment> q = em.createQuery(cq);
 	return signleResultNoCached(q);
+    }
+
+    @Override
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public boolean isUniqueNumber(String number) throws IllegalArgumentException {
+	try {
+	    getByNumber(number);
+	    return false;
+	} catch (NotFound e) {
+	    return true;
+	}
     }
 }
