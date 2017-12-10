@@ -27,7 +27,6 @@
 		<patterns-dao.version>1.1-SNAPSHOT</patterns-dao.version>
 		<lapsa-arquillian-test.version>1.1-SNAPSHOT</lapsa-arquillian-test.version>
 		<epayment-domain.version>4.0-SNAPSHOT</epayment-domain.version>
-		<epayment-jpa-unit.version>4.0-SNAPSHOT</epayment-jpa-unit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -59,11 +58,6 @@
 				<groupId>tech.lapsa.epayment</groupId>
 				<artifactId>epayment-domain</artifactId>
 				<version>${epayment-domain.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>tech.lapsa.epayment</groupId>
-				<artifactId>epayment-jpa-unit</artifactId>
-				<version>${epayment-jpa-unit.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>tech.lapsa.lapsa</groupId>
