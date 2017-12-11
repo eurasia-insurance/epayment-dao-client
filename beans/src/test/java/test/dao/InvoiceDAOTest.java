@@ -7,18 +7,19 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 
-import tech.lapsa.epayment.dao.InvoiceDAO;
+import tech.lapsa.epayment.dao.InvoiceDAO.InvoiceDAOLocal;
 import tech.lapsa.epayment.domain.Invoice;
 import tech.lapsa.java.commons.function.MyNumbers;
 
 public class InvoiceDAOTest extends ArquillianBaseTestCase {
 
     @Inject
-    private InvoiceDAO dao;
+    private InvoiceDAOLocal dao;
 
     @Test
     public void createNewTest() {
-	Invoice entity = dao.save(EntitiesHelper.invoice());
+	final Invoice newEntity = EntitiesHelper.invoice();
+	final Invoice entity = dao.save(newEntity);
 	assertThat(entity, not(nullValue()));
 	assertTrue(MyNumbers.positive(entity.getId()));
     }

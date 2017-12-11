@@ -17,17 +17,18 @@
 	<modules>
 		<module>client</module>
 		<module>beans</module>
+		<module>ear</module>
 	</modules>
 
 	<properties>
 		<!-- BOMS -->
 		<javax-javaee-bom.version>7.0</javax-javaee-bom.version>
+		<payara-bom.version>4.1.2-2-SNAPSHOT</payara-bom.version>
 		<java-commons.version>1.1-SNAPSHOT</java-commons.version>
 		<!-- tech -->
 		<patterns-dao.version>1.1-SNAPSHOT</patterns-dao.version>
 		<lapsa-arquillian-test.version>1.1-SNAPSHOT</lapsa-arquillian-test.version>
 		<epayment-domain.version>4.0-SNAPSHOT</epayment-domain.version>
-		<epayment-jpa-unit.version>4.0-SNAPSHOT</epayment-jpa-unit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,6 +49,13 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
+				<groupId>tech.lapsa.payara</groupId>
+				<artifactId>payara-bom</artifactId>
+				<version>${payara-bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
 				<groupId>tech.lapsa.patterns</groupId>
 				<artifactId>patterns-dao-root</artifactId>
 				<version>${patterns-dao.version}</version>
@@ -59,11 +67,6 @@
 				<groupId>tech.lapsa.epayment</groupId>
 				<artifactId>epayment-domain</artifactId>
 				<version>${epayment-domain.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>tech.lapsa.epayment</groupId>
-				<artifactId>epayment-jpa-unit</artifactId>
-				<version>${epayment-jpa-unit.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>tech.lapsa.lapsa</groupId>
@@ -81,6 +84,12 @@
 				<artifactId>epayment-dao</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>epayment-dao-ear</artifactId>
+				<version>${project.version}</version>
+				<type>ear</type>
 			</dependency>
 			<!-- test -->
 			<dependency>

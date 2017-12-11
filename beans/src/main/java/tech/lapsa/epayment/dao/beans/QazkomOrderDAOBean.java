@@ -8,17 +8,18 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import tech.lapsa.epayment.dao.QazkomOrderDAO;
+import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAOLocal;
+import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAORemote;
 import tech.lapsa.epayment.domain.Invoice;
 import tech.lapsa.epayment.domain.QazkomOrder;
 import tech.lapsa.epayment.domain.QazkomOrder_;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.dao.NotFound;
-import tech.lapsa.patterns.dao.TooMuchFound;
 
 @Stateless
-public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer> implements QazkomOrderDAO {
+public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
+	implements QazkomOrderDAOLocal, QazkomOrderDAORemote {
 
     public QazkomOrderDAOBean() {
 	super(QazkomOrder.class);
@@ -26,30 +27,43 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer> implement
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getByNumber(String number) throws IllegalArgumentException, NotFound, TooMuchFound {
+    public QazkomOrder getByNumber(final String number) throws IllegalArgumentException, NotFound {
 	MyStrings.requireNonEmpty(number, "number");
 
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
-	Root<QazkomOrder> root = cq.from(QazkomOrder.class);
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
+	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
 	cq.select(root) //
 		.where(cb.equal(root.get(QazkomOrder_.orderNumber), number));
 
-	TypedQuery<QazkomOrder> q = em.createQuery(cq);
-	return signleResultNoCached(q);
+	final TypedQuery<QazkomOrder> q = em.createQuery(cq);
+	return signleResult(q);
     }
 
     @Override
-    public QazkomOrder getLatestForInvoice(Invoice forInvoice) throws IllegalArgumentException, NotFound {
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public boolean isUniqueNumber(final String number) throws IllegalArgumentException {
+	try {
+	    getByNumber(number);
+	    return false;
+	} catch (final NotFound e) {
+	    return true;
+	}
+    }
+
+    @Override
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public QazkomOrder getLatestForInvoice(final Invoice forInvoice) throws IllegalArgumentException, NotFound {
 	MyObjects.requireNonNull(forInvoice, "forInvoice");
 
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
-	Root<QazkomOrder> root = cq.from(QazkomOrder.class);
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
+	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
 	cq.select(root) //
 		.where(cb.equal(root.get(QazkomOrder_.forInvoice), forInvoice)) //
 		.orderBy(cb.desc(root.get(QazkomOrder_.created)));
 
-	return signleResultNoCached(em.createQuery(cq).setMaxResults(1));
+	return signleResult(em.createQuery(cq));
     }
+
 }
