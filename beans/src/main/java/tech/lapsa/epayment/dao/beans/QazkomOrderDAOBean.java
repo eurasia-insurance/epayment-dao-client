@@ -27,43 +27,43 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getByNumber(String number) throws IllegalArgumentException, NotFound {
+    public QazkomOrder getByNumber(final String number) throws IllegalArgumentException, NotFound {
 	MyStrings.requireNonEmpty(number, "number");
 
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
-	Root<QazkomOrder> root = cq.from(QazkomOrder.class);
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
+	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
 	cq.select(root) //
 		.where(cb.equal(root.get(QazkomOrder_.orderNumber), number));
 
-	TypedQuery<QazkomOrder> q = em.createQuery(cq);
-	return signleResultNoCached(q);
+	final TypedQuery<QazkomOrder> q = em.createQuery(cq);
+	return signleResult(q);
     }
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public boolean isUniqueNumber(String number) throws IllegalArgumentException {
+    public boolean isUniqueNumber(final String number) throws IllegalArgumentException {
 	try {
 	    getByNumber(number);
 	    return false;
-	} catch (NotFound e) {
+	} catch (final NotFound e) {
 	    return true;
 	}
     }
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getLatestForInvoice(Invoice forInvoice) throws IllegalArgumentException, NotFound {
+    public QazkomOrder getLatestForInvoice(final Invoice forInvoice) throws IllegalArgumentException, NotFound {
 	MyObjects.requireNonNull(forInvoice, "forInvoice");
 
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
-	Root<QazkomOrder> root = cq.from(QazkomOrder.class);
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
+	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
 	cq.select(root) //
 		.where(cb.equal(root.get(QazkomOrder_.forInvoice), forInvoice)) //
 		.orderBy(cb.desc(root.get(QazkomOrder_.created)));
 
-	return signleResultNoCached(em.createQuery(cq));
+	return signleResult(em.createQuery(cq));
     }
 
 }

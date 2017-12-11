@@ -24,26 +24,26 @@ public class InvoiceDAOBean extends ABaseDAO<Invoice, Integer> implements Invoic
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public Invoice getByNumber(String number) throws IllegalArgumentException, NotFound {
+    public Invoice getByNumber(final String number) throws IllegalArgumentException, NotFound {
 	MyStrings.requireNonEmpty(number, "number");
 
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<Invoice> cq = cb.createQuery(Invoice.class);
-	Root<Invoice> root = cq.from(Invoice.class);
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<Invoice> cq = cb.createQuery(Invoice.class);
+	final Root<Invoice> root = cq.from(Invoice.class);
 	cq.select(root) //
 		.where(cb.equal(root.get(Invoice_.number), number));
 
-	TypedQuery<Invoice> q = em.createQuery(cq);
-	return signleResultNoCached(q);
+	final TypedQuery<Invoice> q = em.createQuery(cq);
+	return signleResult(q);
     }
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public boolean isUniqueNumber(String number) throws IllegalArgumentException {
+    public boolean isUniqueNumber(final String number) throws IllegalArgumentException {
 	try {
 	    getByNumber(number);
 	    return false;
-	} catch (NotFound e) {
+	} catch (final NotFound e) {
 	    return true;
 	}
     }
