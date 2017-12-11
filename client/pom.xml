@@ -26,12 +26,13 @@
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
-		<!-- JavaEE -->
+		<!-- Payara -->
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.core</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- JavaEE -->
 		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>javax.ejb-api</artifactId>
