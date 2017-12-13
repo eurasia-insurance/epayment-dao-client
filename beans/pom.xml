@@ -63,6 +63,11 @@
 		</dependency>
 		<!-- test -->
 		<dependency>
+			<groupId>tech.lapsa.epayment</groupId>
+			<artifactId>epayment-qazkom-commons</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>

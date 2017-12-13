@@ -69,6 +69,13 @@
 				<groupId>tech.lapsa.epayment</groupId>
 				<artifactId>epayment-domain</artifactId>
 				<version>${epayment-domain.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>tech.lapsa.epayment</groupId>
+				<artifactId>epayment-domain</artifactId>
+				<version>${epayment-domain.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>tech.lapsa.lapsa</groupId>

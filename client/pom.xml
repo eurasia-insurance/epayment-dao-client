@@ -25,6 +25,12 @@
 			<artifactId>epayment-domain</artifactId>
 			<scope>compile</scope>
 			<optional>false</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>tech.lapsa.epayment</groupId>
+					<artifactId>epayment-qazkom-commons</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- Payara -->
 		<dependency>
