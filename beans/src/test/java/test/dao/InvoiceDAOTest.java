@@ -26,7 +26,7 @@ public class InvoiceDAOTest extends ArquillianBaseTestCase {
 
     @Test
     public void uniqueNumberCheckTest() {
-	Invoice entity = dao.save(EntitiesHelper.invoiceBuilder().withGeneratedNumber(dao::isUniqueNumber).build());
+	Invoice entity = dao.save(EntitiesHelper.invoiceBuilder().withGeneratedNumber().build(dao::isUniqueNumber));
 	assertThat(entity, not(nullValue()));
 	assertTrue(MyNumbers.positive(entity.getId()));
     }
