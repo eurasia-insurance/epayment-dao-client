@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAOLocal;
 import tech.lapsa.epayment.domain.QazkomOrder;
+import tech.lapsa.java.commons.exceptions.IllegalArgument;
 import tech.lapsa.java.commons.function.MyNumbers;
 
 public class QazkomOrderDAOTest extends ArquillianBaseTestCase {
@@ -17,7 +18,7 @@ public class QazkomOrderDAOTest extends ArquillianBaseTestCase {
     private QazkomOrderDAOLocal dao;
 
     @Test
-    public void createNewTest() {
+    public void createNewTest() throws IllegalArgument {
 	QazkomOrder entity = dao.save(EntitiesHelper.qazkomOrder());
 	assertThat(entity, not(nullValue()));
 	assertTrue(MyNumbers.positive(entity.getId()));

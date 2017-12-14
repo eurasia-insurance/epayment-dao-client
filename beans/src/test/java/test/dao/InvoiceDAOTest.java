@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import tech.lapsa.epayment.dao.InvoiceDAO.InvoiceDAOLocal;
 import tech.lapsa.epayment.domain.Invoice;
+import tech.lapsa.java.commons.exceptions.IllegalArgument;
 import tech.lapsa.java.commons.function.MyNumbers;
 
 public class InvoiceDAOTest extends ArquillianBaseTestCase {
@@ -17,7 +18,7 @@ public class InvoiceDAOTest extends ArquillianBaseTestCase {
     private InvoiceDAOLocal dao;
 
     @Test
-    public void createNewTest() {
+    public void createNewTest() throws IllegalArgument {
 	final Invoice newEntity = EntitiesHelper.invoice();
 	final Invoice entity = dao.save(newEntity);
 	assertThat(entity, not(nullValue()));
@@ -25,8 +26,11 @@ public class InvoiceDAOTest extends ArquillianBaseTestCase {
     }
 
     @Test
-    public void uniqueNumberCheckTest() {
-	Invoice entity = dao.save(EntitiesHelper.invoiceBuilder().withGeneratedNumber().build(dao::isUniqueNumber));
+    public void uniqueNumberCheckTest() throws IllegalArgument {
+	Invoice entity = dao.save(EntitiesHelper
+		.invoiceBuilder()
+		.withGeneratedNumber()
+		.build(dao::isValidUniqueNumber));
 	assertThat(entity, not(nullValue()));
 	assertTrue(MyNumbers.positive(entity.getId()));
     }

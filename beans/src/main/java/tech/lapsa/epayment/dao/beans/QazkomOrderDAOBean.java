@@ -13,6 +13,7 @@ import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAORemote;
 import tech.lapsa.epayment.domain.Invoice;
 import tech.lapsa.epayment.domain.QazkomOrder;
 import tech.lapsa.epayment.domain.QazkomOrder_;
+import tech.lapsa.java.commons.exceptions.IllegalArgument;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.dao.NotFound;
@@ -27,33 +28,33 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getByNumber(final String number) throws IllegalArgumentException, NotFound {
-	MyStrings.requireNonEmpty(number, "number");
-
-	final CriteriaBuilder cb = em.getCriteriaBuilder();
-	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
-	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
-	cq.select(root) //
-		.where(cb.equal(root.get(QazkomOrder_.orderNumber), number));
-
-	final TypedQuery<QazkomOrder> q = em.createQuery(cq);
-	return signleResult(q);
-    }
-
-    @Override
-    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public boolean isUniqueNumber(final String number) throws IllegalArgumentException {
+    public QazkomOrder getByNumber(final String number) throws IllegalArgument, NotFound {
 	try {
-	    getByNumber(number);
-	    return false;
-	} catch (final NotFound e) {
-	    return true;
+	    return _getByNumber(number);
+	} catch (IllegalArgumentException e) {
+	    throw new IllegalArgument(e);
 	}
     }
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public QazkomOrder getLatestForInvoice(final Invoice forInvoice) throws IllegalArgumentException, NotFound {
+    public boolean isValidUniqueNumber(final String number) {
+	return _isValidUniqueNumber(number);
+    }
+
+    @Override
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public QazkomOrder getLatestForInvoice(final Invoice forInvoice) throws IllegalArgument, NotFound {
+	try {
+	    return _getLatestForInvoice(forInvoice);
+	} catch (IllegalArgumentException e) {
+	    throw new IllegalArgument(e);
+	}
+    }
+
+    // PRIVATE
+
+    private QazkomOrder _getLatestForInvoice(final Invoice forInvoice) throws IllegalArgumentException, NotFound {
 	MyObjects.requireNonNull(forInvoice, "forInvoice");
 
 	final CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -66,4 +67,27 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
 	return signleResult(em.createQuery(cq));
     }
 
+    private QazkomOrder _getByNumber(final String number) throws IllegalArgumentException, NotFound {
+	MyStrings.requireNonEmpty(number, "number");
+
+	final CriteriaBuilder cb = em.getCriteriaBuilder();
+	final CriteriaQuery<QazkomOrder> cq = cb.createQuery(QazkomOrder.class);
+	final Root<QazkomOrder> root = cq.from(QazkomOrder.class);
+	cq.select(root) //
+		.where(cb.equal(root.get(QazkomOrder_.orderNumber), number));
+
+	final TypedQuery<QazkomOrder> q = em.createQuery(cq);
+	return signleResult(q);
+    }
+
+    private boolean _isValidUniqueNumber(final String number) {
+	try {
+	    _getByNumber(number);
+	    return false;
+	} catch (final NotFound e) {
+	    return true;
+	} catch (IllegalArgumentException e) {
+	    return false;
+	}
+    }
 }
