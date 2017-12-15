@@ -29,7 +29,7 @@ public class QazkomPaymentDAOBean extends ABaseDAO<QazkomPayment, Integer>
     public QazkomPayment getByNumber(final String number) throws IllegalArgument, NotFound {
 	try {
 	    return _getByNumber(number);
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    throw new IllegalArgument(e);
 	}
     }

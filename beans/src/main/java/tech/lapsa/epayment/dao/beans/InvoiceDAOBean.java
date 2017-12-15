@@ -28,7 +28,7 @@ public class InvoiceDAOBean extends ABaseDAO<Invoice, Integer> implements Invoic
     public Invoice getByNumber(final String number) throws IllegalArgument, NotFound {
 	try {
 	    return _getByNumber(number);
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    throw new IllegalArgument(e);
 	}
     }
@@ -60,7 +60,7 @@ public class InvoiceDAOBean extends ABaseDAO<Invoice, Integer> implements Invoic
 	    return false;
 	} catch (final NotFound e) {
 	    return true;
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    return false;
 	}
     }

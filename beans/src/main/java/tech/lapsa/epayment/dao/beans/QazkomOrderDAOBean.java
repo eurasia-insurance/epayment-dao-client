@@ -31,7 +31,7 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
     public QazkomOrder getByNumber(final String number) throws IllegalArgument, NotFound {
 	try {
 	    return _getByNumber(number);
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    throw new IllegalArgument(e);
 	}
     }
@@ -47,7 +47,7 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
     public QazkomOrder getLatestForInvoice(final Invoice forInvoice) throws IllegalArgument, NotFound {
 	try {
 	    return _getLatestForInvoice(forInvoice);
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    throw new IllegalArgument(e);
 	}
     }
@@ -86,7 +86,7 @@ public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
 	    return false;
 	} catch (final NotFound e) {
 	    return true;
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    return false;
 	}
     }

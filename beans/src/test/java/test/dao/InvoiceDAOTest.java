@@ -27,7 +27,7 @@ public class InvoiceDAOTest extends ArquillianBaseTestCase {
 
     @Test
     public void uniqueNumberCheckTest() throws IllegalArgument {
-	Invoice entity = dao.save(EntitiesHelper
+	final Invoice entity = dao.save(EntitiesHelper
 		.invoiceBuilder()
 		.withGeneratedNumber()
 		.build(dao::isValidUniqueNumber));

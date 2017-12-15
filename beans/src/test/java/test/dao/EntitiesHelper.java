@@ -34,10 +34,10 @@ public final class EntitiesHelper {
     private static PrivateKey merchantKey;
 
     static {
-	InputStream storeStream = MyResources.optionalAsStream(EntitiesHelper.class, KEYSTORE) //
+	final InputStream storeStream = MyResources.optionalAsStream(EntitiesHelper.class, KEYSTORE) //
 		.orElseThrow(() -> new RuntimeException("Keystore not found"));
 
-	KeyStore keystore = MyKeyStores.from(storeStream, STORETYPE, STOREPASS) //
+	final KeyStore keystore = MyKeyStores.from(storeStream, STORETYPE, STOREPASS) //
 		.orElseThrow(() -> new RuntimeException("Can not load keystore"));
 
 	merchantKey = MyPrivateKeys.from(keystore, ALIAS, STOREPASS) //
@@ -70,12 +70,12 @@ public final class EntitiesHelper {
 	return qazkomOrder(invoice());
     }
 
-    public static QazkomOrder qazkomOrder(Invoice invoice) {
+    public static QazkomOrder qazkomOrder(final Invoice invoice) {
 	return qazkomOrderBuilder(invoice) //
 		.build();
     }
 
-    public static QazkomOrderBuilder qazkomOrderBuilder(Invoice invoice) {
+    public static QazkomOrderBuilder qazkomOrderBuilder(final Invoice invoice) {
 	return QazkomOrder.builder() //
 		.forInvoice(invoice) //
 		.withNumber("617300137516891") //

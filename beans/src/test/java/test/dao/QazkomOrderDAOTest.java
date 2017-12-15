@@ -19,7 +19,7 @@ public class QazkomOrderDAOTest extends ArquillianBaseTestCase {
 
     @Test
     public void createNewTest() throws IllegalArgument {
-	QazkomOrder entity = dao.save(EntitiesHelper.qazkomOrder());
+	final QazkomOrder entity = dao.save(EntitiesHelper.qazkomOrder());
 	assertThat(entity, not(nullValue()));
 	assertTrue(MyNumbers.positive(entity.getId()));
 	assertThat(entity.getForInvoice(), not(nullValue()));
