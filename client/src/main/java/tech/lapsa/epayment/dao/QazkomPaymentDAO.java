@@ -8,7 +8,7 @@ import tech.lapsa.java.commons.exceptions.IllegalArgument;
 import tech.lapsa.patterns.dao.GeneralDAO;
 import tech.lapsa.patterns.dao.NotFound;
 
-public interface QazkomPaymentDAO extends GeneralDAO<QazkomPayment, Integer> {
+public interface QazkomPaymentDAO extends GeneralDAO<QazkomPayment, Integer>, EJBConstants {
 
     @Local
     public interface QazkomPaymentDAOLocal extends QazkomPaymentDAO {

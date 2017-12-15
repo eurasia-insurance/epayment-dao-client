@@ -6,7 +6,7 @@ import javax.ejb.Remote;
 import tech.lapsa.epayment.domain.QazkomError;
 import tech.lapsa.patterns.dao.GeneralDAO;
 
-public interface QazkomErrorDAO extends GeneralDAO<QazkomError, Integer> {
+public interface QazkomErrorDAO extends GeneralDAO<QazkomError, Integer>, EJBConstants {
 
     @Local
     public interface QazkomErrorDAOLocal extends QazkomErrorDAO {

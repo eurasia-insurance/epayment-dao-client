@@ -6,7 +6,7 @@ import javax.ejb.Remote;
 import tech.lapsa.epayment.domain.Payment;
 import tech.lapsa.patterns.dao.GeneralDAO;
 
-public interface PaymentDAO extends GeneralDAO<Payment, Integer> {
+public interface PaymentDAO extends GeneralDAO<Payment, Integer>, EJBConstants {
 
     @Local
     public interface PaymentDAOLocal extends PaymentDAO {
