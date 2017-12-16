@@ -94,7 +94,7 @@
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>epayment-dao-ear</artifactId>
+				<artifactId>epayment-dao-app</artifactId>
 				<version>${project.version}</version>
 				<type>ear</type>
 			</dependency>
