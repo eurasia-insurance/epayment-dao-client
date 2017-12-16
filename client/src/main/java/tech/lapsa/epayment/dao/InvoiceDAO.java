@@ -10,6 +10,8 @@ import tech.lapsa.patterns.dao.NotFound;
 
 public interface InvoiceDAO extends GeneralDAO<Invoice, Integer>, EJBConstants {
 
+    public static final String BEAN_NAME = "InvoiceDAOBean";
+
     @Local
     public interface InvoiceDAOLocal extends InvoiceDAO {
     }

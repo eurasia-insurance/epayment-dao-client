@@ -10,6 +10,8 @@ import tech.lapsa.patterns.dao.NotFound;
 
 public interface QazkomPaymentDAO extends GeneralDAO<QazkomPayment, Integer>, EJBConstants {
 
+    public static final String BEAN_NAME = "QazkomPaymentDAOBean";
+
     @Local
     public interface QazkomPaymentDAOLocal extends QazkomPaymentDAO {
     }

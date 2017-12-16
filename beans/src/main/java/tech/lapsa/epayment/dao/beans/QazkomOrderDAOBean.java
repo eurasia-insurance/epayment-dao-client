@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import tech.lapsa.epayment.dao.QazkomOrderDAO;
 import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAOLocal;
 import tech.lapsa.epayment.dao.QazkomOrderDAO.QazkomOrderDAORemote;
 import tech.lapsa.epayment.domain.Invoice;
@@ -18,7 +19,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.dao.NotFound;
 
-@Stateless
+@Stateless(name = QazkomOrderDAO.BEAN_NAME)
 public class QazkomOrderDAOBean extends ABaseDAO<QazkomOrder, Integer>
 	implements QazkomOrderDAOLocal, QazkomOrderDAORemote {
 

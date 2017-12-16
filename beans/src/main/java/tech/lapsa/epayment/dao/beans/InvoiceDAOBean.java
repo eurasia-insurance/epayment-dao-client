@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import tech.lapsa.epayment.dao.InvoiceDAO;
 import tech.lapsa.epayment.dao.InvoiceDAO.InvoiceDAOLocal;
 import tech.lapsa.epayment.dao.InvoiceDAO.InvoiceDAORemote;
 import tech.lapsa.epayment.domain.Invoice;
@@ -16,7 +17,7 @@ import tech.lapsa.java.commons.exceptions.IllegalArgument;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.dao.NotFound;
 
-@Stateless
+@Stateless(name = InvoiceDAO.BEAN_NAME)
 public class InvoiceDAOBean extends ABaseDAO<Invoice, Integer> implements InvoiceDAOLocal, InvoiceDAORemote {
 
     public InvoiceDAOBean() {

@@ -11,6 +11,8 @@ import tech.lapsa.patterns.dao.NotFound;
 
 public interface QazkomOrderDAO extends GeneralDAO<QazkomOrder, Integer>, EJBConstants {
 
+    public static final String BEAN_NAME = "QazkomOrderDAOBean";
+
     @Local
     public interface QazkomOrderDAOLocal extends QazkomOrderDAO {
     }

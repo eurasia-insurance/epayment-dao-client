@@ -8,6 +8,8 @@ import tech.lapsa.patterns.dao.GeneralDAO;
 
 public interface QazkomErrorDAO extends GeneralDAO<QazkomError, Integer>, EJBConstants {
 
+    public static final String BEAN_NAME = "QazkomErrorDAOBean";
+
     @Local
     public interface QazkomErrorDAOLocal extends QazkomErrorDAO {
     }
