@@ -10,7 +10,7 @@
 	<artifactId>epayment-dao-app</artifactId>
 	<packaging>ear</packaging>
 
-	<name>Epayment Lib : DAO : EE Application</name>
+	<name>Epayment Lib : DAO : EAR</name>
 
 	<dependencies>
 		<dependency>
