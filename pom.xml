@@ -8,26 +8,18 @@
 	</parent>
 
 	<groupId>tech.lapsa.epayment</groupId>
-	<artifactId>epayment-dao-root</artifactId>
+	<artifactId>epayment-dao-client</artifactId>
 	<version>1.2-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>Epayment Lib : DAO</name>
-
-	<modules>
-		<module>client</module>
-		<module>beans</module>
-		<module>app</module>
-	</modules>
+	<name>Epayment Lib : DAO : EJB-client</name>
 
 	<properties>
 		<!-- BOMS -->
 		<javax-javaee-bom.version>7.0a</javax-javaee-bom.version>
 		<payara-bom.version>4.1.2-2</payara-bom.version>
-		<java-commons.version>1.1</java-commons.version>
 		<!-- tech -->
-		<patterns-dao.version>1.1</patterns-dao.version>
-		<lapsa-arquillian-test.version>1.1</lapsa-arquillian-test.version>
+		<patterns-dao.version>1.2-SNAPSHOT</patterns-dao.version>
 		<epayment-domain.version>4.0</epayment-domain.version>
 	</properties>
 
@@ -38,13 +30,6 @@
 				<groupId>tech.lapsa.javax</groupId>
 				<artifactId>javax-javaee-bom</artifactId>
 				<version>${javax-javaee-bom.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>tech.lapsa.java</groupId>
-				<artifactId>java-commons-root</artifactId>
-				<version>${java-commons.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -67,60 +52,36 @@
 				<groupId>tech.lapsa.epayment</groupId>
 				<artifactId>epayment-domain</artifactId>
 				<version>${epayment-domain.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>tech.lapsa.epayment</groupId>
-				<artifactId>epayment-domain</artifactId>
-				<version>${epayment-domain.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>tech.lapsa.lapsa</groupId>
-				<artifactId>lapsa-arquillian-test</artifactId>
-				<version>${lapsa-arquillian-test.version}</version>
-			</dependency>
-			<!-- own -->
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>epayment-dao-client</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>epayment-dao</artifactId>
-				<version>${project.version}</version>
-				<type>ejb</type>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>epayment-dao-app</artifactId>
-				<version>${project.version}</version>
-				<type>ear</type>
-			</dependency>
-			<!-- test -->
-			<dependency>
-				<groupId>com.h2database</groupId>
-				<artifactId>h2</artifactId>
-				<version>1.4.192</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mariadb.jdbc</groupId>
-				<artifactId>mariadb-java-client</artifactId>
-				<version>1.4.4</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/epayment/dao.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/epayment/dao.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<issueManagement>
-		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/epayment/dao/issues</url>
-	</issueManagement>
+	<dependencies>
+		<!-- tech -->
+		<dependency>
+			<groupId>tech.lapsa.patterns</groupId>
+			<artifactId>patterns-dao-api</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>tech.lapsa.epayment</groupId>
+			<artifactId>epayment-domain</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<!-- Payara -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JavaEE -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 </project>
