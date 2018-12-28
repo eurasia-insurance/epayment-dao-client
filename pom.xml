@@ -9,18 +9,18 @@
 
 	<groupId>tech.lapsa.epayment</groupId>
 	<artifactId>epayment-dao-client</artifactId>
-	<version>1.2.3</version>
+	<version>CURRENT-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Epayment Lib : DAO : EJB-client</name>
 
 	<properties>
 		<!-- BOMS -->
-		<javax-javaee-bom.version>7.0a</javax-javaee-bom.version>
-		<payara-bom.version>4.1.2-2</payara-bom.version>
+		<javax-javaee-bom.version>CURRENT-SNAPSHOT</javax-javaee-bom.version>
+		<payara-bom.version>CURRENT-SNAPSHOT</payara-bom.version>
 		<!-- tech -->
-		<patterns-dao.version>1.2</patterns-dao.version>
-		<epayment-domain.version>4.0.4</epayment-domain.version>
+		<patterns-dao.version>CURRENT-SNAPSHOT</patterns-dao.version>
+		<epayment-domain.version>CURRENT-SNAPSHOT</epayment-domain.version>
 	</properties>
 
 	<dependencyManagement>
